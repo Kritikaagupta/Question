@@ -104,14 +104,19 @@ button {
   background: #f2f2f2;
   color: #555;
 }
-.heart {
-  position: fixed;          /* MOST IMPORTANT */
-  bottom: -30px;
+/* 💗 FLOATING BACKGROUND HEARTS */
+.bg-heart {
+  position: fixed;
+  bottom: -40px;
   font-size: 22px;
-  color: #ff4f9a;
-  animation: floatUp 6s linear forwards;
-  z-index: 9999;            /* card ke upar */
+  animation: floatUp linear forwards;
+  z-index: 0;               /* card ke peeche */
   pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(255, 120, 170, 0.6));
+}
+.card {
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes floatUp {
