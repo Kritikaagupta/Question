@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;   /* ✅ CHANGE HERE */
+  overflow-x: hidden;
   font-family: "Quicksand", sans-serif;
 }
 
@@ -22,6 +22,8 @@ body {
   width: 340px;
   box-shadow: 0 30px 60px rgba(255, 120, 170, 0.25);
   animation: floatIn 1s ease;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes floatIn {
@@ -78,6 +80,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 14px;
+  position: relative;
 }
 
 button {
@@ -94,6 +97,7 @@ button {
   background: linear-gradient(135deg, #ff6fae, #ff3f8e);
   color: white;
   box-shadow: 0 10px 20px rgba(255, 80, 150, 0.35);
+  z-index: 2;
 }
 
 #yes:hover {
@@ -103,20 +107,19 @@ button {
 #no {
   background: #f2f2f2;
   color: #555;
+  position: relative;
+  z-index: 2;
 }
+
 /* 💗 FLOATING BACKGROUND HEARTS */
 .bg-heart {
   position: fixed;
   bottom: -40px;
   font-size: 22px;
   animation: floatUp linear forwards;
-  z-index: 0;               /* card ke peeche */
+  z-index: 0;
   pointer-events: none;
   filter: drop-shadow(0 0 6px rgba(255, 120, 170, 0.6));
-}
-.card {
-  position: relative;
-  z-index: 2;
 }
 
 @keyframes floatUp {
@@ -126,6 +129,27 @@ button {
   }
   to {
     transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ❤️ CONFETTI HEARTS (YES click) */
+.heart {
+  position: fixed;
+  bottom: 0;
+  font-size: 26px;
+  animation: confettiUp 2.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes confettiUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-650px) scale(1.8);
     opacity: 0;
   }
 }
