@@ -31,23 +31,13 @@ function spawnHeart() {
 /* Continuous hearts */
 setInterval(spawnHeart, 900);
 
-/* YES button → play song + hearts */
+/* YES button → PLAY SONG */
 yesBtn.addEventListener("click", () => {
-  // YouTube autoplay (browser-safe)
   yt.src =
     "https://www.youtube.com/embed/AXDnfm7qqZ4" +
     "?autoplay=1" +
-    "&mute=1" +
     "&loop=1" +
     "&playlist=AXDnfm7qqZ4";
-
-  // unmute after user interaction
-  setTimeout(() => {
-    yt.contentWindow.postMessage(
-      '{"event":"command","func":"unMute","args":""}',
-      "*"
-    );
-  }, 1200);
 
   // extra hearts
   for (let i = 0; i < 8; i++) spawnHeart();
