@@ -37,16 +37,33 @@ setInterval(spawnHeart, 900);
 
 /* ❤️ Heart confetti on YES click */
 function confettiHearts() {
-  for (let i = 0; i < 25; i++) {
+  function confettiHearts() {
+  const rect = yesBtn.getBoundingClientRect();
+
+  for (let i = 0; i < 30; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.innerText = ["❤️","💖","💕","💘"][Math.floor(Math.random() * 4)];
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    document.body.appendChild(heart);
+    heart.innerText = ["💖", "💕", "💘", "❤️"][Math.floor(Math.random() * 4)];
 
-    setTimeout(() => heart.remove(), 2500);
+    // Start EXACTLY from YES button centre
+    const startX = rect.left + rect.width / 2;
+    const startY = rect.top + rect.height / 2;
+
+    heart.style.left = startX + "px";
+    heart.style.top = startY + "px";
+
+    // 🎯 Random burst direction (UPWARD + SIDE)
+    const x = (Math.random() - 0.5) * 300;   // left-right spread
+    const y = -(Math.random() * 350 + 150); // strong upward blast
+
+    heart.style.setProperty("--x", `${x}px`);
+    heart.style.setProperty("--y", `${y}px`);
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2400);
   }
 }
+
 
 /* ✅ YES button → grows + confetti + music */
 yesBtn.addEventListener("click", () => {
