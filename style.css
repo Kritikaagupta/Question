@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -9,155 +7,77 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: "Quicksand", sans-serif;
+}
+
+/* Canvas layers */
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
 }
 
 /* Card */
 .card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255,255,255,0.9);
   padding: 40px 32px 44px;
   border-radius: 24px;
   text-align: center;
   width: 340px;
-  box-shadow: 0 30px 60px rgba(255, 120, 170, 0.25);
-  animation: floatIn 1s ease;
+  box-shadow: 0 30px 60px rgba(255,120,170,0.25);
   position: relative;
-  z-index: 2;
-}
-
-@keyframes floatIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  z-index: 10;
 }
 
 .top-heart {
   font-size: 40px;
-  margin-bottom: 10px;
   animation: heartbeat 1.6s infinite;
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
+  0%,100% { transform: scale(1); }
   50% { transform: scale(1.15); }
 }
 
 h1 {
   font-family: "Playfair Display", serif;
   color: #ff4f9a;
-  font-size: 30px;
-  margin: 8px 0 14px;
 }
 
-.question {
-  color: #666;
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0;
-}
+.question { color: #666; }
+.question.bold { font-size: 18px; font-weight: 600; }
 
-.question.bold {
-  font-weight: 600;
-  font-size: 18px;
-  color: #444;
-  margin: 16px 0 10px;
-}
+.subtitle { color: #b96a8f; margin-bottom: 28px; }
 
-.subtitle {
-  font-size: 15px;
-  color: #b96a8f;
-  margin-bottom: 28px;
-}
-
-/* Buttons */
 .buttons {
   display: flex;
-  justify-content: center;
   gap: 14px;
-  position: relative;
+  justify-content: center;
 }
 
 button {
   border: none;
   padding: 12px 20px;
-  font-size: 15px;
   border-radius: 999px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Quicksand", sans-serif;
 }
 
 #yes {
-  background: linear-gradient(135deg, #ff6fae, #ff3f8e);
+  background: linear-gradient(135deg,#ff6fae,#ff3f8e);
   color: white;
-  box-shadow: 0 10px 20px rgba(255, 80, 150, 0.35);
-  z-index: 2;
-}
-
-#yes:hover {
-  transform: translateY(-2px) scale(1.05);
 }
 
 #no {
-  background: #f2f2f2;
+  background: #eee;
   color: #555;
-  position: relative;
-  z-index: 2;
-}
-
-/* 💗 FLOATING BACKGROUND HEARTS */
-.bg-heart {
-  position: fixed;
-  bottom: -40px;
-  font-size: 22px;
-  animation: floatUp linear forwards;
-  z-index: 0;
-  pointer-events: none;
-  filter: drop-shadow(0 0 6px rgba(255, 120, 170, 0.6));
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-120vh) scale(1.4);
-    opacity: 0;
-  }
-}
-
-/* ❤️ CONFETTI HEARTS (YES click) */
-.heart {
-  position: fixed;
-  bottom: 0;
-  font-size: 26px;
-  animation: confettiUp 2.6s ease-out forwards;
-  pointer-events: none;
-  z-index: 5;
-}
-
-@keyframes confettiBurst {
-  0% {
-    transform: translate(0, 0) scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x), var(--y)) scale(1.6);
-    opacity: 0;
-  }
-}
-
-.heart {
-  position: fixed;
-  font-size: 26px;
-  animation: confettiBurst 2.4s ease-out forwards;
-  pointer-events: none;
-  z-index: 5;
 }
