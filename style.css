@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden;   /* ✅ CHANGE HERE */
   font-family: "Quicksand", sans-serif;
 }
 
@@ -103,4 +103,24 @@ button {
 #no {
   background: #f2f2f2;
   color: #555;
+}
+.heart {
+  position: fixed;          /* MOST IMPORTANT */
+  bottom: -30px;
+  font-size: 22px;
+  color: #ff4f9a;
+  animation: floatUp 6s linear forwards;
+  z-index: 9999;            /* card ke upar */
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
 }
